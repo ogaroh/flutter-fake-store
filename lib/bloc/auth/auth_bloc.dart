@@ -1,30 +1,34 @@
+import 'package:fake_store/domain/repositories/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../domain/repositories/auth_repository.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository repository;
+  final AuthRepository _authRepository;
 
-  AuthBloc(this.repository) : super(const AuthInitial()) {
+  AuthBloc(this._authRepository) : super(AuthInitial()) {
     on<AuthLoginRequested>(_onLoginRequested);
+    on<AuthLogoutRequested>(_onLogoutRequested);
   }
 
   Future<void> _onLoginRequested(
     AuthLoginRequested event,
     Emitter<AuthState> emit,
   ) async {
-    emit(const AuthLoading());
+    emit(AuthLoading());
     try {
-      final user = await repository.login(event.username, event.password);
+      final user = await _authRepository.login(event.username, event.password);
       if (user != null) {
-        emit(AuthSuccess(user));
+        emit(AuthAuthenticated(user));
       } else {
         emit(const AuthError("Login error"));
       }
     } catch (e) {
       emit(AuthError(e.toString()));
     }
+  }
+
+  void _onLogoutRequested(AuthLogoutRequested event, Emitter<AuthState> emit) {
+    emit(AuthUnauthenticated());
   }
 }

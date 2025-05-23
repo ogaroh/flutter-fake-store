@@ -2,11 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:go_router/go_router.dart';
-
-import 'package:fake_store/presentation/state/auth/auth_bloc.dart';
-import 'package:fake_store/injection.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:fake_store/injection.dart';
+import 'package:fake_store/presentation/state/auth/auth_bloc.dart';
+import 'package:fake_store/presentation/state/auth/auth_event.dart';
+import 'package:fake_store/presentation/state/auth/auth_state.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -39,14 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
             log(state.toString());
             log(state.runtimeType.toString());
 
-            final stateR = state.runtimeType.toString();
-
-            if (stateR == '_Success') {
+            if (state is AuthSuccess) {
               context.go('/products');
-            } else if (stateR == '_Error') {
+            } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(state.toString()),
+                  content: Text(state.message),
                   backgroundColor: Colors.red,
                   behavior: SnackBarBehavior.floating,
                 ),
@@ -54,9 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
             }
           },
           builder: (context, state) {
-            final stateR = state.runtimeType.toString();
-
-            final isLoading = stateR == '_Loading';
+            final isLoading = state is AuthLoading;
 
             return SafeArea(
               child: Padding(
@@ -123,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   if (_formKey.currentState?.validate() ??
                                       false) {
                                     context.read<AuthBloc>().add(
-                                      AuthEvent.login(
+                                      AuthLoginRequested(
                                         username:
                                             _usernameController.text.trim(),
                                         password: _passwordController.text,

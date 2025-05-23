@@ -1,55 +1,45 @@
+import 'package:fake_store/injection.dart';
+import 'package:fake_store/presentation/state/product/product_bloc.dart';
+import 'package:fake_store/presentation/state/product/product_event.dart';
+import 'package:fake_store/presentation/state/product/product_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductListScreen extends StatelessWidget {
   const ProductListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Products')),
-      body: const Center(child: Text('Products')),
-
-      // return BlocProvider(
-      //   create:
-      //       (_) => ProductBloc(getIt())..add(const ProductEvent.fetchProducts()),
-      //   child: Scaffold(
-      //     appBar: AppBar(
-      //       title: const Text('Products'),
-      //       actions: [
-      //         IconButton(
-      //           onPressed: () {
-      //             context.go('/counter');
-      //           },
-      //           icon: const Icon(Icons.add),
-      //         ),
-      //       ],
-      //     ),
-      // body: BlocBuilder<ProductBloc, ProductState>(
-      //   builder: (context, state) {
-      //     return state.when(
-      //       initial: () => const Center(child: Text('Welcome')),
-      //       loading: () => const Center(child: CircularProgressIndicator()),
-      //       loaded:
-      //           (products) => ListView.builder(
-      //             itemCount: products.length,
-      //             itemBuilder: (context, index) {
-      //               final product = products[index];
-      //               return ListTile(
-      //                 leading: Image.network(
-      //                   product.image,
-      //                   width: 50,
-      //                   height: 50,
-      //                 ),
-      //                 title: Text(product.title),
-      //                 subtitle: Text('\$${product.price.toStringAsFixed(2)}'),
-      //                 onTap: () => context.go('/product/${product.id}'),
-      //               );
-      //             },
-      //           ),
-      //       error: (message) => Center(child: Text(message)),
-      //     );
-      //   },
-      // ),
+    return BlocProvider(
+      create: (_) => ProductBloc(getIt())..add(const FetchProducts()),
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Products')),
+        body: BlocBuilder<ProductBloc, ProductState>(
+          builder: (context, state) {
+            if (state is ProductLoading) {
+              return const CircularProgressIndicator();
+            } else if (state is ProductLoaded) {
+              return ListView.builder(
+                itemCount: state.products.length,
+                itemBuilder: (context, index) {
+                  final product = state.products[index];
+                  return ListTile(
+                    title: Text(product.title),
+                    subtitle: Text(product.description),
+                    onTap: () {
+                      context.push('/product/${product.id}');
+                    },
+                  );
+                },
+              );
+            } else if (state is ProductError) {
+              return Text(state.message);
+            }
+            return const SizedBox();
+          },
+        ),
+      ),
     );
   }
 }
