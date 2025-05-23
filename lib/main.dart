@@ -1,3 +1,4 @@
+import 'package:fake_store/injection.dart' show configureDependencies;
 import 'package:flutter/material.dart';
 import 'package:fake_store/app.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -14,6 +15,7 @@ Future<void> runMainApp() async {
   ErrorWidget.builder = errorBuilderWidget;
 
   // Add your initialization code here
+  configureDependencies();
 
   FlutterNativeSplash.remove();
 

@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:fake_store/flavors.dart';
+import 'package:fake_store/presentation/routes/app_router.dart' show router;
 import 'package:flutter/material.dart';
 import 'package:fake_store/l10n/l10n.dart';
 import 'package:flutter/services.dart';
@@ -16,9 +17,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Fake Store',
       debugShowCheckedModeBanner: false,
+      routerConfig: router,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const MyHomePage(title: 'Fake Store'),
+      // home: const MyHomePage(title: 'Fake Store'),
       builder: (context, child) {
         return Banner(
           message: F.appFlavor?.name ?? '',
