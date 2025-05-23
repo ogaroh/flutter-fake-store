@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:go_router/go_router.dart';
 
-import 'package:fake_store/bloc/auth/auth_bloc.dart';
+import 'package:fake_store/presentation/state/auth/auth_bloc.dart';
 import 'package:fake_store/injection.dart';
 import 'package:go_router/go_router.dart';
 
