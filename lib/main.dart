@@ -1,7 +1,9 @@
+import 'package:fake_store/injection.dart' show configureDependencies;
 import 'package:flutter/material.dart';
 import 'package:fake_store/app.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter/services.dart';
+import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 
 Future<void> runMainApp() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +16,8 @@ Future<void> runMainApp() async {
   ErrorWidget.builder = errorBuilderWidget;
 
   // Add your initialization code here
+  await PersistentShoppingCart().init();
+  configureDependencies();
 
   FlutterNativeSplash.remove();
 
