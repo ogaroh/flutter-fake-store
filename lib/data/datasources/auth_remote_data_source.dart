@@ -20,7 +20,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     UserModel? userModel;
 
     final response = await dioClient.dio.post(
-      '/users',
+      '/auth/login',
       data: {"username": username, "password": password},
     );
 
@@ -32,6 +32,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final userDetailsResponse = await dioClient.dio.get(
         '/users/${response.data['id']}',
       );
+
+      final token = response.data['token'];
+
+      if (token != null) {
+        // TODO: save token to local storage
+      }
 
       log(userDetailsResponse.statusCode.toString());
       log(userDetailsResponse.data.toString());

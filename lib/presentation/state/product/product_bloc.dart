@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../../domain/repositories/product_repository.dart';
 import 'product_event.dart';
 import 'product_state.dart';
 
+@injectable
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRepository repository;
 

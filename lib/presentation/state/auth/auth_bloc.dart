@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:injectable/injectable.dart';
 import '../../../domain/repositories/auth_repository.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository repository;
 
