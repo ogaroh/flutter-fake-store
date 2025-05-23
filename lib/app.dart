@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:fake_store/flavors.dart';
 import 'package:flutter/material.dart';
 import 'package:fake_store/l10n/l10n.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/services.dart';
 // Define color variables
 final Color pinkColor = const Color(0xFFDA79E5);
 final Color purpleColor = const Color(0xFF6139F7);
+final Color bannerColor = Colors.pink.shade800;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,9 +43,9 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'Fake Store'),
       builder: (context, child) {
         return Banner(
-          message: 'Codika',
+          message: F.appFlavor?.name ?? '',
           location: BannerLocation.topEnd,
-          color: pinkColor,
+          color: bannerColor,
           shadow: const BoxShadow(
             color: Colors.black12,
             blurRadius: 10,

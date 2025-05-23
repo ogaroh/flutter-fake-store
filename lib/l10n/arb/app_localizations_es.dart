@@ -12,8 +12,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get counterAppBarTitle => 'Codika App';
 
   @override
-  String get youHavePushedTheButtonThisManyTimes =>
-      'Has pulsado el botón este número de veces:';
+  String get youHavePushedTheButtonThisManyTimes => 'Has pulsado el botón este número de veces:';
 
   @override
   String hello(String userName) {
@@ -24,6 +23,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String nWombats(num count) {
     final intl.NumberFormat countNumberFormat = intl.NumberFormat.compact(
       locale: localeName,
+      
     );
     final String countString = countNumberFormat.format(count);
 
@@ -39,18 +39,23 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String pronoun(String gender) {
-    String _temp0 = intl.Intl.selectLogic(gender, {
-      'male': 'él',
-      'female': 'ella',
-      'other': 'elle',
-    });
+    String _temp0 = intl.Intl.selectLogic(
+      gender,
+      {
+        'male': 'él',
+        'female': 'ella',
+        'other': 'elle',
+      },
+    );
     return '$_temp0';
   }
 
   @override
   String numberOfDataPoints(int value) {
-    final intl.NumberFormat valueNumberFormat = intl
-        .NumberFormat.compactCurrency(locale: localeName, decimalDigits: 2);
+    final intl.NumberFormat valueNumberFormat = intl.NumberFormat.compactCurrency(
+      locale: localeName,
+      decimalDigits: 2
+    );
     final String valueString = valueNumberFormat.format(value);
 
     return 'Número de puntos de datos: $valueString';
