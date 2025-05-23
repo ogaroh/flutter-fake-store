@@ -4,3 +4,5 @@
 ASSET_PREFIX=dev
 BUNDLE_NAME=FakeStore Dev
 BUNDLE_DISPLAY_NAME=FakeStore Dev
+
+#include "Dart-Defines.xcconfig"

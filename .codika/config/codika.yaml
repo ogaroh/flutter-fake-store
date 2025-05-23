@@ -1,0 +1,21 @@
+projectName: fake_store
+appName: FakeStore
+organisationName: dev.ogaroh
+git: true
+gitRemoteUrl: "git@github.com:ogaroh/flutter-fake-store.git"
+starterProject: flutter_starter
+environments: 
+  - dev
+  - prod
+
+components: 
+  - core_app_icon
+  - core_splash_screen
+  - core_localizations
+
+params: 
+  flutter_version: 3.29.2
+  app_name: FakeStore
+
+executors: 
+  - android_configurations
