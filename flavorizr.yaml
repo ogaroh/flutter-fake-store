@@ -1,0 +1,37 @@
+app:
+  android:
+    flavorDimensions: "flavor-type"
+flavors:
+  dev:
+    app:
+      name: "FakeStore Dev"
+    android:
+      applicationId: "dev.ogaroh.fake_store.dev"
+      # icon: "assets/envs/dev/app-icon.png"
+      # adaptiveIcon:
+      #   foreground: "assets/envs/dev/app-icon-foreground.png"
+      #   background: "assets/envs/dev/app-icon-background.png"
+    ios:
+      bundleId: "dev.ogaroh.fakeStore.dev"
+      # icon: "assets/envs/dev/app-icon.png"
+    macos:
+      bundleId: "dev.ogaroh.fakeStore.dev"
+      # icon: "assets/envs/dev/app-icon.png"
+  
+  
+  
+  prod:
+    app:
+      name: "FakeStore"
+    android:
+      applicationId: "dev.ogaroh.fake_store"  
+      # icon: "assets/envs/prod/app-icon.png"
+      # adaptiveIcon:
+      #   foreground: "assets/envs/prod/app-icon-foreground.png"
+      #   background: "assets/envs/prod/app-icon-background.png"
+    ios:
+      bundleId: "dev.ogaroh.fakeStore"
+      # icon: "assets/envs/prod/app-icon.png"
+    macos:
+      bundleId: "dev.ogaroh.fakeStore"
+      # icon: "assets/envs/prod/app-icon.png"

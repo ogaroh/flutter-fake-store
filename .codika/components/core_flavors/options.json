@@ -1,0 +1,1 @@
+{"project_name":"fake_store","environments":["dev","prod"],"app_name":"FakeStore","ios_bundle_id":"dev.ogaroh.fakeStore","android_package_name":"dev.ogaroh.fake_store"}
