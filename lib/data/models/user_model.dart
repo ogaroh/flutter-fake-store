@@ -101,4 +101,28 @@ class UserModel {
     phone: phone,
     v: v,
   );
+
+  // from entity to model
+  factory UserModel.fromEntity(User user) => UserModel(
+    id: user.id,
+    phone: user.phone,
+    v: user.v,
+    email: user.email,
+    username: user.username,
+    password: user.password,
+    name: NameModel(
+      firstname: user.name.firstname,
+      lastname: user.name.lastname,
+    ),
+    address: AddressModel(
+      geolocation: GeolocationModel(
+        lat: user.address.geolocation.lat,
+        long: user.address.geolocation.long,
+      ),
+      city: user.address.city,
+      street: user.address.street,
+      number: user.address.number,
+      zipcode: user.address.zipcode,
+    ),
+  );
 }
