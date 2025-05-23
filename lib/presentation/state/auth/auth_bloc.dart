@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../domain/repositories/auth_repository.dart';
@@ -38,6 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthLogoutRequested event,
     Emitter<AuthState> emit,
   ) async {
+    log('Logout requested');
     await _prefsManager.clearAuthData();
     emit(const AuthLogoutSuccess());
   }

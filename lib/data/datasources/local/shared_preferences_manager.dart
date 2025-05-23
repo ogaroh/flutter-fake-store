@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:fake_store/data/models/user_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,6 +55,9 @@ class SharedPreferencesManager {
 
   // Check if user is logged in
   bool isLoggedIn() {
-    return getToken() != null;
+    final bool isLoggedIn = getToken() != null;
+
+    log("Is logged in? $isLoggedIn");
+    return isLoggedIn;
   }
 }

@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
             log(state.runtimeType.toString());
 
             if (state is AuthSuccess) {
-              context.go('/products');
+              context.go('/home');
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
