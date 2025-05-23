@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
-import '../models/product_model.dart';
-import '../../core/network/dio_client.dart';
+import '../../models/product_model.dart';
+import '../../../core/network/dio_client.dart';
 
 abstract class ProductRemoteDataSource {
   Future<List<ProductModel>> fetchProducts({int limit, int offset});

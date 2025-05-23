@@ -1,13 +1,18 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:developer';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../../domain/repositories/auth_repository.dart';
+import '../../../data/datasources/local/shared_preferences_manager.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository repository;
+  final SharedPreferencesManager _prefsManager;
 
-  AuthBloc(this.repository) : super(const AuthInitial()) {
+  AuthBloc(this.repository, this._prefsManager) : super(const AuthInitial()) {
     on<AuthLoginRequested>(_onLoginRequested);
     on<AuthLogoutRequested>(_onLogoutRequested);
   }
@@ -35,7 +40,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthLogoutRequested event,
     Emitter<AuthState> emit,
   ) async {
-    // TODO: logout user & remove user from local storage
+    log('Logout requested');
+    await _prefsManager.clearAuthData();
     emit(const AuthLogoutSuccess());
   }
 }

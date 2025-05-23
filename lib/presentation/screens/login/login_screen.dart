@@ -3,12 +3,14 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:injectable/injectable.dart';
 
 import 'package:fake_store/injection.dart';
 import 'package:fake_store/presentation/state/auth/auth_bloc.dart';
 import 'package:fake_store/presentation/state/auth/auth_event.dart';
 import 'package:fake_store/presentation/state/auth/auth_state.dart';
 
+@injectable
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -32,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => AuthBloc(getIt()),
+      create: (_) => getIt<AuthBloc>(),
       child: Scaffold(
         appBar: AppBar(title: const Text('Login'), centerTitle: true),
         body: BlocConsumer<AuthBloc, AuthState>(
@@ -41,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
             log(state.runtimeType.toString());
 
             if (state is AuthSuccess) {
-              context.go('/products');
+              context.go('/home');
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(

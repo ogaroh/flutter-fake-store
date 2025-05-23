@@ -3,8 +3,10 @@ import 'package:fake_store/presentation/state/product/product_event.dart';
 import 'package:fake_store/presentation/state/product/product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../../injection.dart';
 
+@injectable
 class ProductDetailScreen extends StatelessWidget {
   final int productId;
 
@@ -13,7 +15,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ProductBloc(getIt())..add(FetchProductDetails(productId)),
+      create: (_) => getIt<ProductBloc>()..add(FetchProductDetails(productId)),
       child: Scaffold(
         appBar: AppBar(title: const Text('Product Details')),
         body: BlocBuilder<ProductBloc, ProductState>(

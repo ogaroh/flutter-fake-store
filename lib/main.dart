@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:fake_store/injection.dart' show configureDependencies;
 import 'package:flutter/material.dart';
 import 'package:fake_store/app.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter/services.dart';
 import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
@@ -14,6 +17,8 @@ Future<void> runMainApp() async {
   );
 
   ErrorWidget.builder = errorBuilderWidget;
+
+  Bloc.observer = const AppBlocObserver();
 
   // Add your initialization code here
   await PersistentShoppingCart().init();
@@ -42,4 +47,20 @@ Widget errorBuilderWidget(FlutterErrorDetails details) {
       ),
     ),
   );
+}
+
+class AppBlocObserver extends BlocObserver {
+  const AppBlocObserver();
+
+  @override
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
+    super.onChange(bloc, change);
+    log('onChange(${bloc.runtimeType}, $change)');
+  }
+
+  @override
+  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
+    log('onError(${bloc.runtimeType}, $error, $stackTrace)');
+    super.onError(bloc, error, stackTrace);
+  }
 }

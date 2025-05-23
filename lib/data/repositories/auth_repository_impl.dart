@@ -1,4 +1,4 @@
-import 'package:fake_store/data/datasources/auth_remote_data_source.dart';
+import 'package:fake_store/data/datasources/remote/auth_remote_data_source.dart';
 import 'package:injectable/injectable.dart';
 import 'package:fake_store/domain/repositories/auth_repository.dart';
 import 'package:fake_store/domain/entities/user.dart';
