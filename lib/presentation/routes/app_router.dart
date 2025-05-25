@@ -29,7 +29,7 @@ final GoRouter routerConfig = GoRouter(
 
     // If user is not logged in and not on login/welcome page, redirect to login
     if (!isLoggedIn && !isLoginRoute && !isWelcomeRoute) {
-      return login;
+      return welcome;
     }
 
     // If user is logged in and on login/welcome page, redirect to products
