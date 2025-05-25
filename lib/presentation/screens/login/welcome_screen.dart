@@ -1,3 +1,4 @@
+import 'package:fake_store/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +17,7 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go("/login");
+                context.go(login);
               },
               child: Text("Login"),
             ),

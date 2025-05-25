@@ -1,3 +1,4 @@
+import 'package:fake_store/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +21,7 @@ class ProductListScreen extends StatelessWidget {
         actions: [
           FilledButton.icon(
             onPressed: () async {
-              context.go('/login');
+              context.go(welcome);
               getIt<AuthBloc>().add(const AuthLogoutRequested());
             },
             icon: const Icon(Icons.logout),
