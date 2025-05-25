@@ -48,7 +48,7 @@ class AppButton extends StatelessWidget {
     switch (type) {
       case AppButtonType.primary:
         return ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColors.primaryLight,
           foregroundColor: Colors.black,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
