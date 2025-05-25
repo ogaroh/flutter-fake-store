@@ -1,6 +1,0 @@
-#include "../../Flutter/prodRelease.xcconfig"
-#include "Warnings.xcconfig"
-
-ASSET_PREFIX=prod
-BUNDLE_NAME=FakeStore
-BUNDLE_DISPLAY_NAME=FakeStore
