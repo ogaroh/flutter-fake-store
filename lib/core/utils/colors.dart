@@ -10,4 +10,5 @@ final Color defaultBlue = Color(0xFF0000FF);
 final Color defaultYellow = Color(0xFFFFFF00);
 final Color defaultPurple = Color(0xFF800080);
 final Color defaultOrange = Color(0xFFFFA500);
-final Color lightOrange = Color(0xFFFFE8B2);
+final Color defaultMustard = Color(0xFFD49F07);
+final Color lightMustard = Color(0xFFFFE8B2);

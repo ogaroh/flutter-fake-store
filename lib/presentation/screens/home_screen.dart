@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:fake_store/presentation/routes/app_router.dart';
 import 'package:fake_store/presentation/state/auth/auth_bloc.dart';
 import 'package:fake_store/presentation/state/auth/auth_state.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
       listener: (context, state) {
         log("Listener: ${state.toString()}");
         if (state is AuthLogoutSuccess) {
-          context.go('/login');
+          context.go(welcome);
         }
       },
       child: Scaffold(
