@@ -13,11 +13,11 @@ import 'package:fake_store/presentation//screens/product_list/product_list_scree
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 // paths
+final String welcome = '/welcome';
+final String login = '/login';
 final String home = '/home';
 final String products = '$home/products';
 final String productDetails = '$home/product/:id';
-final String login = '/login';
-final String welcome = '/welcome';
 
 final GoRouter routerConfig = GoRouter(
   navigatorKey: _rootNavigatorKey,
