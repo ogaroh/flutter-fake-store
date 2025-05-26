@@ -39,7 +39,7 @@ class AppButton extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w900,
             color: _getTextColor(type),
           ),
         ),
