@@ -1,5 +1,6 @@
 import 'package:fake_store/core/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 enum AppButtonType {
   primary,
@@ -106,5 +107,28 @@ class AppButton extends StatelessWidget {
       case AppButtonType.ghost:
         return Colors.black54;
     }
+  }
+}
+
+class CustomBackButtom extends StatelessWidget {
+  const CustomBackButtom({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+      height: 50,
+      width: 50,
+      decoration: BoxDecoration(
+        color: AppColors.greyFill,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.outline),
+      ),
+      child: InkWell(
+        onTap: () => context.pop(),
+        child: const Icon(Icons.arrow_back_ios_new_rounded),
+      ),
+    );
   }
 }

@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          leading: BackButton(onPressed: () => context.pop()),
+          title: Row(children: [CustomBackButtom(), Spacer()]),
         ),
         body: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
