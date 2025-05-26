@@ -1,11 +1,8 @@
-import 'package:fake_store/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fake_store/injection.dart';
-import 'package:fake_store/presentation/state/auth/auth_bloc.dart';
-import 'package:fake_store/presentation/state/auth/auth_event.dart';
 import 'package:fake_store/presentation/state/product/product_bloc.dart';
 import 'package:fake_store/presentation/state/product/product_event.dart';
 import 'package:fake_store/presentation/state/product/product_state.dart';
@@ -48,21 +45,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Products'),
-        actions: [
-          FilledButton.icon(
-            onPressed: () {
-              context.go(welcome);
-              getIt<AuthBloc>().add(const AuthLogoutRequested());
-            },
-            icon: const Icon(Icons.logout),
-            label: const Text('Logout'),
-            style: FilledButton.styleFrom(backgroundColor: Colors.red.shade700),
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           final products =

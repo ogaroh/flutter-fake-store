@@ -1,8 +1,14 @@
 import 'dart:developer';
 
+import 'package:fake_store/core/extensions/extensions.dart';
+import 'package:fake_store/core/utils/colors.dart';
+import 'package:fake_store/data/datasources/local/shared_preferences_manager.dart';
+import 'package:fake_store/injection.dart';
 import 'package:fake_store/presentation/routes/app_router.dart';
 import 'package:fake_store/presentation/state/auth/auth_bloc.dart';
+import 'package:fake_store/presentation/state/auth/auth_event.dart';
 import 'package:fake_store/presentation/state/auth/auth_state.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:fake_store/presentation/screens/product_list/product_list_screen.dart';
 import 'package:fake_store/presentation/screens/wishlist/wishlist_screen.dart';
@@ -28,6 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // user name
+    final user = getIt<SharedPreferencesManager>().getUser();
+    final name = user?.username ?? 'username';
+    final List<String> titles = [
+      'Welcome,\n${name.capitalize}',
+      'Wishlist',
+      'Cart',
+    ];
+
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         log("Listener: ${state.toString()}");
@@ -36,6 +51,50 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       },
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            titles[_currentIndex],
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+          ),
+          actions: [
+            InkWell(
+              onTap: () {
+                context.go(welcome);
+                getIt<AuthBloc>().add(const AuthLogoutRequested());
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryLight,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    margin: EdgeInsets.only(bottom: 3),
+                    child: Icon(
+                      FeatherIcons.logOut,
+                      color: AppColors.dark,
+                      size: 20,
+                    ),
+                  ),
+                  Text(
+                    'Log out',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w900,
+                      color: AppColors.dark,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 16),
+          ],
+        ),
         body: IndexedStack(index: _currentIndex, children: _screens),
         bottomNavigationBar: NavigationBar(
           selectedIndex: _currentIndex,

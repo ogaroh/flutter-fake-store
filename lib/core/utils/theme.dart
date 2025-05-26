@@ -10,12 +10,14 @@ class AppTheme {
       bodyColor: AppColors.black,
       displayColor: AppColors.black,
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
+      toolbarHeight: 80,
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.black,
       iconTheme: IconThemeData(color: AppColors.black),
       titleTextStyle: TextStyle(
-        color: AppColors.black,
+        color: AppColors.dark,
+        fontFamily: GoogleFonts.urbanist().fontFamily,
         fontSize: 20,
         fontWeight: FontWeight.w600,
       ),
