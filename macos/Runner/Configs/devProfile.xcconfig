@@ -1,6 +1,0 @@
-#include "../../Flutter/devProfile.xcconfig"
-#include "Warnings.xcconfig"
-
-ASSET_PREFIX=dev
-BUNDLE_NAME=FakeStore Dev
-BUNDLE_DISPLAY_NAME=FakeStore Dev

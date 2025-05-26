@@ -12,9 +12,9 @@ abstract class RegisterModule {
 }
 
 @InjectableInit(
-  initializerName: 'init', // default
-  preferRelativeImports: true, // default
-  asExtension: true, // default
+  initializerName: 'init',
+  preferRelativeImports: true,
+  asExtension: true,
 )
 void configureDependencies() {
   // Initialize all dependencies using the generated code

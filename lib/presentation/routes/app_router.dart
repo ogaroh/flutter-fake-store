@@ -13,11 +13,11 @@ import 'package:fake_store/presentation//screens/product_list/product_list_scree
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 // paths
+final String welcome = '/welcome';
+final String login = '/login';
 final String home = '/home';
 final String products = '$home/products';
 final String productDetails = '$home/product/:id';
-final String login = '/login';
-final String welcome = '/welcome';
 
 final GoRouter routerConfig = GoRouter(
   navigatorKey: _rootNavigatorKey,
@@ -29,7 +29,7 @@ final GoRouter routerConfig = GoRouter(
 
     // If user is not logged in and not on login/welcome page, redirect to login
     if (!isLoggedIn && !isLoginRoute && !isWelcomeRoute) {
-      return login;
+      return welcome;
     }
 
     // If user is logged in and on login/welcome page, redirect to products
