@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:fake_store/core/utils/theme.dart';
 import 'package:fake_store/flavors.dart';
 import 'package:fake_store/injection.dart';
 import 'package:fake_store/presentation/routes/app_router.dart'
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
         routerConfig: routerConfig,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        themeMode: ThemeMode.light,
         builder: (context, child) {
           return Banner(
             message: F.appFlavor?.name ?? '',
