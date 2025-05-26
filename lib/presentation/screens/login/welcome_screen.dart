@@ -41,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
                 AppButton(
                   label: 'Login',
                   type: AppButtonType.dark,
-                  onPressed: () => context.go(login),
+                  onPressed: () => context.push(login),
                 ),
                 SizedBox(height: 100),
               ],

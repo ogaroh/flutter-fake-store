@@ -36,6 +36,32 @@ class AppTheme {
       onPrimary: AppColors.black,
       onSecondary: AppColors.black,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: TextStyle(
+        color: AppColors.dark,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      ),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.outline, width: 2.0),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.outline, width: 2.0),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.grey, width: 2.0),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      fillColor: AppColors.greyFill,
+      filled: true,
+      hintStyle: TextStyle(
+        color: AppColors.grey,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
   );
 
   static ThemeData get dark => ThemeData(

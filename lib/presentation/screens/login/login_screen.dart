@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:fake_store/presentation/routes/app_router.dart';
 import 'package:fake_store/presentation/widgets/button.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +24,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  // focus nodes
+  final _usernameFocusNode = FocusNode();
+  final _passwordFocusNode = FocusNode();
+
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
 
@@ -29,6 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     _usernameController.dispose();
     _passwordController.dispose();
+    _usernameFocusNode.dispose();
+    _passwordFocusNode.dispose();
     super.dispose();
   }
 
@@ -37,14 +46,14 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocProvider(
       create: (_) => getIt<AuthBloc>(),
       child: Scaffold(
-        appBar: AppBar(title: const Text('Login'), centerTitle: true),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          leading: BackButton(onPressed: () => context.pop()),
+        ),
         body: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
-            log(state.toString());
-            log(state.runtimeType.toString());
-
             if (state is AuthSuccess) {
-              context.go('/home');
+              context.go(home);
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -67,12 +76,25 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const SizedBox(height: 20),
+                      Text(
+                        'Welcome back! Glad to see you, Again!',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineLarge?.copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 30,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
                       TextFormField(
                         controller: _usernameController,
+                        focusNode: _usernameFocusNode,
+                        autofocus: true,
                         decoration: const InputDecoration(
                           labelText: 'Username',
+                          hintText: 'Enter your username',
                           border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(FeatherIcons.user),
                         ),
                         enabled: !isLoading,
                         validator: (value) {
@@ -81,20 +103,29 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                           return null;
                         },
+                        onFieldSubmitted:
+                            (_) => _passwordFocusNode.requestFocus(),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       TextFormField(
                         controller: _passwordController,
                         obscureText: _obscurePassword,
+                        focusNode: _passwordFocusNode,
+                        onFieldSubmitted:
+                            (_) =>
+                                _passwordFocusNode.hasFocus
+                                    ? _passwordFocusNode.unfocus()
+                                    : null,
                         decoration: InputDecoration(
                           labelText: 'Password',
+                          hintText: 'Enter your password',
                           border: const OutlineInputBorder(),
-                          prefixIcon: const Icon(Icons.lock),
+                          prefixIcon: const Icon(FeatherIcons.lock),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscurePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                                  ? FeatherIcons.eye
+                                  : FeatherIcons.eyeOff,
                             ),
                             onPressed: () {
                               setState(() {
@@ -114,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 30),
                       AppButton(
                         label: isLoading ? 'Please wait...' : 'Login',
                         type: AppButtonType.dark,
