@@ -64,8 +64,8 @@ The app follows Clean Architecture principles with the following layers:
 lib/
 ├── core/
 │   ├── router/       # Navigation
-│   ├── theme/        # App theme
 │   ├── extensions/        # Extensions
+│   ├── network/        # Network
 │   └── utils/        # Utilities, theme, constants & color
 ├── data/
 │   ├── models/       # Data models
