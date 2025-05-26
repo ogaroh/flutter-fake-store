@@ -8,7 +8,9 @@ abstract class ProductEvent extends Equatable {
 }
 
 class FetchProducts extends ProductEvent {
-  const FetchProducts();
+  final bool loadMore;
+
+  const FetchProducts({this.loadMore = false});
 }
 
 class FetchProductDetails extends ProductEvent {

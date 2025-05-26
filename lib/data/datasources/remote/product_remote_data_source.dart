@@ -18,7 +18,10 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     int limit = 10,
     int offset = 0,
   }) async {
-    final response = await dioClient.dio.get('/products');
+    final response = await dioClient.dio.get(
+      '/products',
+      queryParameters: {'limit': limit, 'offset': offset},
+    );
     final List data = response.data;
     return data.map((json) => ProductModel.fromJson(json)).toList();
   }
