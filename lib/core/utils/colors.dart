@@ -7,4 +7,5 @@ class AppColors {
   static const Color outline = Color(0xFFBDBDBD);
   static const Color disabled = Color(0xFFF6F6F6);
   static const Color black = Color(0xFF1E1E1E);
+  static const Color white = Color(0xFFFFFFFF);
 }

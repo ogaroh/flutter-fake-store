@@ -5,13 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   static ThemeData get light => ThemeData(
     primaryColor: AppColors.primaryDark,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.white,
     textTheme: GoogleFonts.urbanistTextTheme().apply(
       bodyColor: AppColors.black,
       displayColor: AppColors.black,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primaryDark,
+      backgroundColor: AppColors.white,
       foregroundColor: AppColors.black,
       iconTheme: IconThemeData(color: AppColors.black),
       titleTextStyle: TextStyle(
@@ -32,7 +32,7 @@ class AppTheme {
     colorScheme: ColorScheme.fromSwatch().copyWith(
       primary: AppColors.primaryDark,
       secondary: AppColors.primaryDark,
-      surface: Colors.white,
+      surface: AppColors.white,
       onPrimary: AppColors.black,
       onSecondary: AppColors.black,
     ),
@@ -42,15 +42,15 @@ class AppTheme {
     primaryColor: AppColors.dark,
     scaffoldBackgroundColor: AppColors.dark,
     textTheme: GoogleFonts.urbanistTextTheme().apply(
-      bodyColor: Colors.white,
-      displayColor: Colors.white,
+      bodyColor: AppColors.white,
+      displayColor: AppColors.white,
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.dark,
-      foregroundColor: Colors.white,
-      iconTheme: IconThemeData(color: Colors.white),
+      foregroundColor: AppColors.white,
+      iconTheme: IconThemeData(color: AppColors.white),
       titleTextStyle: TextStyle(
-        color: Colors.white,
+        color: AppColors.white,
         fontSize: 20,
         fontWeight: FontWeight.w600,
       ),
@@ -59,7 +59,7 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryDark,
-        foregroundColor: Colors.white,
+        foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         elevation: 0,
       ),
@@ -68,8 +68,8 @@ class AppTheme {
       primary: AppColors.primaryDark,
       secondary: AppColors.primaryDark,
       surface: AppColors.dark,
-      onPrimary: Colors.white,
-      onSecondary: Colors.white,
+      onPrimary: AppColors.white,
+      onSecondary: AppColors.white,
     ),
   );
 }
