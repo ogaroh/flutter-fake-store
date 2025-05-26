@@ -2,8 +2,6 @@
 
 import 'package:fake_store/core/utils/colors.dart';
 import 'package:fake_store/domain/entities/product.dart';
-import 'package:fake_store/presentation/widgets/snackbar.dart';
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -87,12 +85,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               // add / remove from wishlist shared preferences
-              IconButton(
-                onPressed: () {
-                  CustomSnackbar.show(context, 'Wishlist coming soon...');
-                },
-                icon: Icon(FeatherIcons.heart, color: AppColors.red),
-              ),
+              // WishlistButton(product: ProductModel.fromEntity(product)),
             ],
           ),
         ),
