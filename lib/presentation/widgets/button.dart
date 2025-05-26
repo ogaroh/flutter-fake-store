@@ -59,20 +59,20 @@ class AppButton extends StatelessWidget {
       case AppButtonType.primaryDark:
         return ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryDark,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
         );
       case AppButtonType.dark:
         return ElevatedButton.styleFrom(
           backgroundColor: AppColors.dark,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0.5,
         );
       case AppButtonType.outline:
         return ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.white,
           foregroundColor: Colors.black,
           side: const BorderSide(color: Colors.black54, width: 2),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -80,7 +80,7 @@ class AppButton extends StatelessWidget {
         );
       case AppButtonType.outlineSecondary:
         return ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.white,
           foregroundColor: Colors.black54,
           side: const BorderSide(color: AppColors.outline, width: 2),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -102,7 +102,7 @@ class AppButton extends StatelessWidget {
         return Colors.black;
       case AppButtonType.primaryDark:
       case AppButtonType.dark:
-        return Colors.white;
+        return AppColors.white;
       case AppButtonType.outline:
         return Colors.black;
       case AppButtonType.outlineSecondary:
