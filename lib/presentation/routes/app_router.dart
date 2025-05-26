@@ -4,24 +4,20 @@ import 'package:fake_store/presentation/screens/home_screen.dart';
 import 'package:fake_store/presentation/screens/login/login_screen.dart';
 import 'package:fake_store/presentation/screens/login/welcome_screen.dart';
 import 'package:fake_store/presentation/screens/product_details/product_details_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fake_store/presentation//screens/product_list/product_list_screen.dart';
-
-// navigator key
-final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 // paths
 final String welcome = '/welcome';
 final String login = '/login';
 final String home = '/home';
-final String products = '$home/products';
-final String productDetails = '$home/product/:id';
+final String products = '/products';
+final String productDetails = '/product';
 
 final GoRouter routerConfig = GoRouter(
-  navigatorKey: _rootNavigatorKey,
   initialLocation: '/',
+  debugLogDiagnostics: true,
   redirect: (context, state) {
     final isLoggedIn = getIt<SharedPreferencesManager>().isLoggedIn();
     final isLoginRoute = state.matchedLocation == login;
@@ -52,8 +48,8 @@ final GoRouter routerConfig = GoRouter(
         GoRoute(
           path: productDetails,
           builder: (context, state) {
-            final productId = state.pathParameters['id']!;
-            return ProductDetailScreen(productId: int.parse(productId));
+            final productId = state.extra as int;
+            return ProductDetailScreen(productId: productId);
           },
         ),
       ],

@@ -15,10 +15,13 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<List<ProductModel>> fetchProducts({
-    int limit = 10,
+    int limit = 100,
     int offset = 0,
   }) async {
-    final response = await dioClient.dio.get('/products');
+    final response = await dioClient.dio.get(
+      '/products',
+      queryParameters: {'limit': limit, 'offset': offset},
+    );
     final List data = response.data;
     return data.map((json) => ProductModel.fromJson(json)).toList();
   }

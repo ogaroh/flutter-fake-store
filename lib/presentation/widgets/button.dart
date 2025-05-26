@@ -15,12 +15,14 @@ class AppButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
   final AppButtonType type;
+  final double? width;
 
   const AppButton({
     super.key,
     required this.label,
     required this.onPressed,
     this.type = AppButtonType.primary,
+    this.width,
   });
 
   @override
@@ -28,7 +30,7 @@ class AppButton extends StatelessWidget {
     final style = _getButtonStyle(type);
 
     return SizedBox(
-      width: double.infinity,
+      width: width ?? double.infinity,
       height: 55,
       child: ElevatedButton(
         onPressed: onPressed,
@@ -37,7 +39,7 @@ class AppButton extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w900,
             color: _getTextColor(type),
           ),
         ),
@@ -57,20 +59,20 @@ class AppButton extends StatelessWidget {
       case AppButtonType.primaryDark:
         return ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryDark,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
         );
       case AppButtonType.dark:
         return ElevatedButton.styleFrom(
           backgroundColor: AppColors.dark,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0.5,
         );
       case AppButtonType.outline:
         return ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.white,
           foregroundColor: Colors.black,
           side: const BorderSide(color: Colors.black54, width: 2),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -78,7 +80,7 @@ class AppButton extends StatelessWidget {
         );
       case AppButtonType.outlineSecondary:
         return ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.white,
           foregroundColor: Colors.black54,
           side: const BorderSide(color: AppColors.outline, width: 2),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -100,7 +102,7 @@ class AppButton extends StatelessWidget {
         return Colors.black;
       case AppButtonType.primaryDark:
       case AppButtonType.dark:
-        return Colors.white;
+        return AppColors.white;
       case AppButtonType.outline:
         return Colors.black;
       case AppButtonType.outlineSecondary:

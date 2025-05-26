@@ -13,16 +13,14 @@ class ProductInitial extends ProductState {
 }
 
 class ProductLoading extends ProductState {
-  const ProductLoading();
+  final List<Product> previousProducts;
+  const ProductLoading({this.previousProducts = const []});
 }
 
 class ProductLoaded extends ProductState {
   final List<Product> products;
-
-  const ProductLoaded(this.products);
-
-  @override
-  List<Object?> get props => [products];
+  final bool hasReachedEnd;
+  const ProductLoaded(this.products, {this.hasReachedEnd = false});
 }
 
 class ProductDetailsLoaded extends ProductState {

@@ -1,3 +1,4 @@
+import 'package:fake_store/domain/entities/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../domain/repositories/product_repository.dart';
@@ -17,10 +18,27 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     FetchProducts event,
     Emitter<ProductState> emit,
   ) async {
-    emit(const ProductLoading());
+    List<Product> currentProducts = [];
+
+    // Preserve existing products if loading more
+    if (event.loadMore && state is ProductLoaded) {
+      currentProducts = (state as ProductLoaded).products;
+      emit(ProductLoading(previousProducts: currentProducts));
+    } else {
+      emit(const ProductLoading());
+    }
+
     try {
-      final products = await repository.fetchProducts();
-      emit(ProductLoaded(products));
+      final offset = currentProducts.length;
+      final newProducts = await repository.fetchProducts(
+        limit: 100,
+        offset: offset,
+      );
+
+      final allProducts = [...currentProducts, ...newProducts];
+      final hasReachedEnd = newProducts.isEmpty;
+
+      emit(ProductLoaded(allProducts, hasReachedEnd: hasReachedEnd));
     } catch (e) {
       emit(ProductError(e.toString()));
     }
