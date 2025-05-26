@@ -68,15 +68,12 @@ class _ProductListScreenState extends State<ProductListScreen> {
           final products =
               state is ProductLoaded
                   ? state.products
-                  : (state is ProductLoading && state.previousProducts != null)
-                  ? state.previousProducts!
+                  : (state is ProductLoading)
+                  ? state.previousProducts
                   : [];
 
           final isInitialLoading =
               state is ProductLoading && (state.previousProducts.isEmpty);
-
-          final isLoadingMore =
-              state is ProductLoading && (state.previousProducts.isNotEmpty);
 
           final hasReachedEnd = state is ProductLoaded && state.hasReachedEnd;
 
