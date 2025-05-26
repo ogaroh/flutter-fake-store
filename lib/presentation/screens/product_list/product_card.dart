@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:fake_store/core/utils/colors.dart';
 import 'package:fake_store/domain/entities/product.dart';
 import 'package:feather_icons/feather_icons.dart';
