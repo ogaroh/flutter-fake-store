@@ -1,4 +1,4 @@
-# Fake Store App
+![Screenshot_1748248824](https://github.com/user-attachments/assets/0771f829-731c-4faa-b7cb-22fab52494ae)![Screenshot_1748253879](https://github.com/user-attachments/assets/ccdc4efe-e5eb-4121-888c-1bbcf893f3b4)![Screenshot_1748254515](https://github.com/user-attachments/assets/b45df6a5-e7e1-47dc-9d50-80c94bb1734f)![Screenshot_1748242559](https://github.com/user-attachments/assets/15ca6b5d-70ba-406d-b802-434e7a700b64)# Fake Store App
 
 A Flutter e-commerce application that demonstrates modern app architecture and state management patterns.
 
@@ -185,3 +185,24 @@ flutter test
 
 # Next steps
 1. Wishlist management
+
+
+# Screenshots
+1. Welcome
+  ![Screenshot_1748242559](https://github.com/user-attachments/assets/9b0fe1c8-5265-408b-9812-f174bb09e333)
+
+2. Login
+![Screenshot_1748254515](https://github.com/user-attachments/assets/3ff2dd5d-f598-4f4b-b6bc-5e844743595c)
+![Screenshot_1748254550](https://github.com/user-attachments/assets/1163115d-5358-463a-8bc9-e4e4271d022c)
+
+3. Product list
+![Screenshot_1748253879](https://github.com/user-attachments/assets/53c632a1-145b-4d0d-9049-bfe67fa1a8f4)
+
+4. Product details
+![Screenshot_1748253881](https://github.com/user-attachments/assets/8b306bab-1b93-4ad1-adce-071e2e958534)
+![Screenshot_1748248824](https://github.com/user-attachments/assets/5153dc19-cedf-4ce2-b92d-305ffb9124c3)
+
+5. Cart
+![Screenshot_1748253875](https://github.com/user-attachments/assets/ca9a0d92-6a9f-4ca0-a746-72f9da534785)
+
+
