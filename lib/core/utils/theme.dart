@@ -12,6 +12,8 @@ class AppTheme {
     ),
     appBarTheme: AppBarTheme(
       toolbarHeight: 80,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.black,
       iconTheme: IconThemeData(color: AppColors.black),

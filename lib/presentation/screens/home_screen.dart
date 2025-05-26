@@ -96,27 +96,43 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         body: IndexedStack(index: _currentIndex, children: _screens),
-        bottomNavigationBar: NavigationBar(
-          selectedIndex: _currentIndex,
-          onDestinationSelected: (index) {
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _currentIndex,
+          backgroundColor: AppColors.white,
+          selectedItemColor: AppColors.dark,
+          unselectedItemColor: AppColors.greyLight1,
+          showUnselectedLabels: false,
+          showSelectedLabels: true,
+          selectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w900,
+          ),
+          unselectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w900,
+          ),
+          onTap: (index) {
             setState(() {
               _currentIndex = index;
             });
           },
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(FeatherIcons.home),
+              activeIcon: Icon(FeatherIcons.home),
               label: 'Home',
             ),
-            NavigationDestination(
-              icon: Icon(Icons.favorite_outline),
-              selectedIcon: Icon(Icons.favorite),
+
+            BottomNavigationBarItem(
+              icon: Icon(FeatherIcons.heart),
+              activeIcon: Icon(FeatherIcons.heart),
               label: 'Wishlist',
             ),
-            NavigationDestination(
-              icon: Icon(Icons.shopping_cart_outlined),
-              selectedIcon: Icon(Icons.shopping_cart),
+
+            BottomNavigationBarItem(
+              icon: Icon(FeatherIcons.shoppingBag),
+              activeIcon: Icon(FeatherIcons.shoppingBag),
               label: 'Cart',
             ),
           ],
