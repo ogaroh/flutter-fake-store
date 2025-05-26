@@ -15,7 +15,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<List<ProductModel>> fetchProducts({
-    int limit = 10,
+    int limit = 100,
     int offset = 0,
   }) async {
     final response = await dioClient.dio.get(

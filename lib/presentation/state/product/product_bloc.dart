@@ -31,7 +31,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     try {
       final offset = currentProducts.length;
       final newProducts = await repository.fetchProducts(
-        limit: 10,
+        limit: 100,
         offset: offset,
       );
 
