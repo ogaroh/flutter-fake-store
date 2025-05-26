@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:fake_store/presentation/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -114,7 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                       const SizedBox(height: 24),
-                      ElevatedButton(
+                      AppButton(
+                        label: isLoading ? 'Please wait...' : 'Login',
+                        type: AppButtonType.dark,
                         onPressed:
                             isLoading
                                 ? null
@@ -130,22 +133,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     );
                                   }
                                 },
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                        ),
-                        child:
-                            isLoading
-                                ? const SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 2,
-                                  ),
-                                )
-                                : const Text(
-                                  'Login',
-                                  style: TextStyle(fontSize: 16),
-                                ),
                       ),
                     ],
                   ),
