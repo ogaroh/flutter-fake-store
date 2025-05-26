@@ -48,7 +48,7 @@ class ProductListScreen extends StatelessWidget {
                     title: Text(product.title),
                     subtitle: Text(product.description),
                     onTap: () {
-                      context.push('/home/product/${product.id}');
+                      context.go('/home/product', extra: product.id);
                     },
                   );
                 },
