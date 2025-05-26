@@ -37,4 +37,15 @@ class ProductModel {
     rating: (rating['rate'] as num).toDouble(),
     category: category,
   );
+
+  // from entity
+  factory ProductModel.fromEntity(Product product) => ProductModel(
+    id: product.id,
+    title: product.title,
+    description: product.description,
+    price: product.price,
+    image: product.image,
+    rating: {'rate': product.rating},
+    category: product.category,
+  );
 }

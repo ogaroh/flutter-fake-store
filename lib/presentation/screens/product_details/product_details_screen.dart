@@ -1,15 +1,20 @@
 import 'package:fake_store/core/extensions/extensions.dart';
 import 'package:fake_store/core/utils/colors.dart';
+import 'package:fake_store/data/models/cart_item.dart';
+import 'package:fake_store/data/models/product_model.dart';
 import 'package:fake_store/presentation/state/product/product_bloc.dart';
 import 'package:fake_store/presentation/state/product/product_event.dart';
 import 'package:fake_store/presentation/state/product/product_state.dart';
 import 'package:fake_store/presentation/widgets/button.dart';
+import 'package:fake_store/presentation/widgets/snackbar.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
 import '../../../injection.dart';
+import 'package:fake_store/presentation/state/cart/cart_bloc.dart';
+import 'package:fake_store/presentation/state/cart/cart_event.dart';
 
 @injectable
 class ProductDetailScreen extends StatelessWidget {
@@ -27,8 +32,12 @@ class ProductDetailScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           actions: [
-            // TODO: add / remove from wishlist
-            IconButton(onPressed: () {}, icon: Icon(FeatherIcons.heart)),
+            IconButton(
+              onPressed: () {
+                CustomSnackbar.show(context, 'Wishlist coming soon...');
+              },
+              icon: Icon(FeatherIcons.heart),
+            ),
           ],
         ),
         body: BlocBuilder<ProductBloc, ProductState>(
@@ -156,14 +165,28 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 16),
+
+                          // TODO: remove from cart if already in cart
                           AppButton(
                             label: 'Add to Cart',
-                            // TODO: add to cart / remove from cart
-                            onPressed: () {},
+                            onPressed: () {
+                              getIt<CartBloc>().add(
+                                AddToCart(
+                                  CartItem(
+                                    product: ProductModel.fromEntity(product),
+                                  ),
+                                ),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Added to cart'),
+                                  duration: Duration(seconds: 1),
+                                ),
+                              );
+                            },
                             type: AppButtonType.dark,
                             width: 250,
                           ),
-
                           SizedBox(width: 16),
                         ],
                       ),

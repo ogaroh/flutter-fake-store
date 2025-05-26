@@ -9,6 +9,7 @@ enum AppButtonType {
   outline,
   outlineSecondary,
   ghost,
+  error,
 }
 
 class AppButton extends StatelessWidget {
@@ -93,6 +94,13 @@ class AppButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
         );
+      case AppButtonType.error:
+        return ElevatedButton.styleFrom(
+          backgroundColor: AppColors.red,
+          foregroundColor: AppColors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          elevation: 0,
+        );
     }
   }
 
@@ -108,6 +116,8 @@ class AppButton extends StatelessWidget {
       case AppButtonType.outlineSecondary:
       case AppButtonType.ghost:
         return Colors.black54;
+      case AppButtonType.error:
+        return AppColors.white;
     }
   }
 }
