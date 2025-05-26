@@ -2,7 +2,6 @@ import 'package:fake_store/core/extensions/extensions.dart';
 import 'package:fake_store/core/utils/colors.dart';
 import 'package:fake_store/data/models/cart_item.dart';
 import 'package:fake_store/data/models/product_model.dart';
-import 'package:fake_store/presentation/state/cart/cart_state.dart';
 import 'package:fake_store/presentation/state/product/product_bloc.dart';
 import 'package:fake_store/presentation/state/product/product_event.dart';
 import 'package:fake_store/presentation/state/product/product_state.dart';
@@ -176,7 +175,7 @@ class ProductDetailScreen extends StatelessWidget {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Added to cart'),
-                                  duration: Duration(seconds: 2),
+                                  duration: Duration(seconds: 1),
                                 ),
                               );
                             },
