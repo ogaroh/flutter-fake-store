@@ -6,6 +6,7 @@ import 'package:fake_store/presentation/state/product/product_bloc.dart';
 import 'package:fake_store/presentation/state/product/product_event.dart';
 import 'package:fake_store/presentation/state/product/product_state.dart';
 import 'package:fake_store/presentation/widgets/button.dart';
+import 'package:fake_store/presentation/widgets/snackbar.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,8 +32,12 @@ class ProductDetailScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           actions: [
-            // TODO: add / remove from wishlist
-            IconButton(onPressed: () {}, icon: Icon(FeatherIcons.heart)),
+            IconButton(
+              onPressed: () {
+                CustomSnackbar.show(context, 'Wishlist coming soon...');
+              },
+              icon: Icon(FeatherIcons.heart),
+            ),
           ],
         ),
         body: BlocBuilder<ProductBloc, ProductState>(

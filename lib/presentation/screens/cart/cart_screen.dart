@@ -1,4 +1,5 @@
 import 'package:fake_store/core/utils/colors.dart';
+import 'package:fake_store/presentation/widgets/snackbar.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -104,7 +105,10 @@ class CartScreen extends StatelessWidget {
                           width: 250,
                           label: 'Checkout',
                           onPressed: () {
-                            // TODO: Implement checkout
+                            CustomSnackbar.show(
+                              context,
+                              'Checkout not implemented...',
+                            );
                           },
                           type: AppButtonType.dark,
                         ),
