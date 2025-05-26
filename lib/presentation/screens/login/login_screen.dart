@@ -89,8 +89,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         focusNode: _usernameFocusNode,
                         autofocus: true,
                         decoration: const InputDecoration(
-                          labelText: 'Username',
-                          hintText: 'Enter your username',
+                          hintText: 'Username',
+                          labelText: 'Enter your username',
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(FeatherIcons.user),
                         ),
@@ -115,8 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ? _passwordFocusNode.unfocus()
                                     : null,
                         decoration: InputDecoration(
-                          labelText: 'Password',
-                          hintText: 'Enter your password',
+                          hintText: 'Password',
+                          labelText: 'Enter your password',
                           border: const OutlineInputBorder(),
                           prefixIcon: const Icon(FeatherIcons.lock),
                           suffixIcon: IconButton(
