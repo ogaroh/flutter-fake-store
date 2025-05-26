@@ -15,12 +15,14 @@ class AppButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
   final AppButtonType type;
+  final double? width;
 
   const AppButton({
     super.key,
     required this.label,
     required this.onPressed,
     this.type = AppButtonType.primary,
+    this.width,
   });
 
   @override
@@ -28,7 +30,7 @@ class AppButton extends StatelessWidget {
     final style = _getButtonStyle(type);
 
     return SizedBox(
-      width: double.infinity,
+      width: width ?? double.infinity,
       height: 55,
       child: ElevatedButton(
         onPressed: onPressed,
