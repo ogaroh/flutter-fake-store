@@ -1,4 +1,4 @@
-![Screenshot_1748248824](https://github.com/user-attachments/assets/0771f829-731c-4faa-b7cb-22fab52494ae)![Screenshot_1748253879](https://github.com/user-attachments/assets/ccdc4efe-e5eb-4121-888c-1bbcf893f3b4)![Screenshot_1748254515](https://github.com/user-attachments/assets/b45df6a5-e7e1-47dc-9d50-80c94bb1734f)![Screenshot_1748242559](https://github.com/user-attachments/assets/15ca6b5d-70ba-406d-b802-434e7a700b64)# Fake Store App
+# Fake Store App
 
 A Flutter e-commerce application that demonstrates modern app architecture and state management patterns.
 
