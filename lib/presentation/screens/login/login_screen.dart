@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:fake_store/presentation/routes/app_router.dart';
 import 'package:fake_store/presentation/widgets/button.dart';
 import 'package:feather_icons/feather_icons.dart';
